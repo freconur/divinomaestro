@@ -1,0 +1,144 @@
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+.imageWrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.description {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.section {
+    padding: 8rem 0;
+}
+
+.pillarDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.pillarRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.pillarRow.reverse {
+    direction: rtl;
+}
+
+.pillarRow.reverse .textPart {
+    direction: ltr;
+}
+
+.imagePart {
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    height: 400px;
+}
+
+.imagePart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textPart h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.textPart p {
+    font-size: 1.1rem;
+    color: var(--slate-500);
+    line-height: 1.7;
+}
+
+.levelsSection {
+    background: var(--background);
+    padding: 8rem 0;
+}
+
+.levelGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.levelCard {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 32px;
+    border: 1px solid var(--slate-200);
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.levelCard:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .pillarRow {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .pillarRow.reverse {
+        direction: ltr;
+        /* Reset direction */
+    }
+
+    .imagePart {
+        height: 250px;
+    }
+
+    .levelGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

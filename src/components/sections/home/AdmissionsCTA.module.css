@@ -1,0 +1,143 @@
+.admissions {
+    padding: 10rem 0;
+    background: var(--primary-dark);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.bgImage {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    z-index: 1;
+}
+
+.bgImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) saturate(0.85);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            rgba(187, 71, 69, 0.8) 0%,
+            rgba(0, 74, 173, 0.4) 100%);
+    z-index: 2;
+}
+
+.bgDecoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.bgDecoration div {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.shape1 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent);
+    top: -200px;
+    right: -100px;
+}
+
+.shape2 {
+    width: 400px;
+    height: 400px;
+    background: var(--white);
+    bottom: -150px;
+    left: -100px;
+}
+
+.container {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    line-height: 1.1;
+}
+
+.description {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.primaryBtn {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 1.2rem 2.5rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.primaryBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 222, 89, 0.3);
+}
+
+.secondaryBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 1.2rem 2.5rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition-smooth);
+}
+
+.secondaryBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,214 @@
+.navbar {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    z-index: 1000;
+    background: rgba(253, 253, 201, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(187, 71, 69, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.logo span {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(187, 71, 69, 0.2);
+}
+
+.navLinks {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.navLink {
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition-smooth);
+    opacity: 0.8;
+}
+
+.navLink:hover,
+.navLink.active {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+    width: 20px;
+}
+
+.cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 20px rgba(187, 71, 69, 0.25);
+    transition: var(--transition-smooth);
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(187, 71, 69, 0.35);
+}
+
+/* Mobile Toggle */
+.mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-dark);
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0.5rem;
+}
+
+/* Mobile Menu Overlay */
+.mobileMenu {
+    position: fixed;
+    top: 80px;
+    /* Below navbar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    pointer-events: none;
+}
+
+.mobileMenu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobileLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.mobileLink {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-decoration: none;
+    position: relative;
+    opacity: 0.8;
+    transition: var(--transition-smooth);
+}
+
+.mobileLink.active,
+.mobileLink:hover {
+    opacity: 1;
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+.mobileCta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 25px rgba(187, 71, 69, 0.3);
+    margin-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 2rem;
+        top: 0;
+        /* Align to top since TopBar is hidden */
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .navLinks {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .navLinks,
+    .desktopCta {
+        display: none;
+    }
+
+    .mobileToggle {
+        display: block;
+    }
+
+    .navbar {
+        padding: 0 1.5rem;
+        height: 70px;
+        top: 0;
+        /* Align to top on mobile if TopBar is hidden or stacked */
+    }
+
+    /* Adjust top offset for menu if TopBar is present/absent */
+    .mobileMenu {
+        top: 70px;
+    }
+}

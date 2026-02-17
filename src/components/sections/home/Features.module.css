@@ -1,0 +1,122 @@
+.features {
+    background: var(--background);
+    position: relative;
+    padding: 10rem 0;
+    overflow: hidden;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(80px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.subtitle {
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    padding: 3.5rem 2.5rem;
+    border-radius: 32px;
+    background: var(--white);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--slate-100);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card::after {
+    content: attr(data-number);
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary-light);
+    box-shadow: 0 30px 60px rgba(187, 71, 69, 0.1);
+}
+
+.card:hover::after {
+    opacity: 0.08;
+    transform: translateY(-10px);
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent) 0%, #fff9e6 100%);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(187, 71, 69, 0.1);
+    font-size: 2.2rem;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.card:hover .iconWrapper {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 15px 35px rgba(187, 71, 69, 0.3);
+}
+
+.featureTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.featureDescription {
+    color: var(--slate-500);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+}

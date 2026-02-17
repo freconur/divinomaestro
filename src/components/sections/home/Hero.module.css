@@ -1,0 +1,196 @@
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--primary-dark);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.6) 100%);
+    z-index: 2;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: var(--accent);
+    color: var(--primary-dark);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--white);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.title span {
+    color: var(--primary);
+    position: relative;
+}
+
+.title span::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--accent);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.description {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.secondaryBtn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    background: var(--white);
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.secondaryBtn:hover {
+    background: var(--primary-light);
+    color: var(--white);
+    border-color: var(--primary-light);
+}
+
+.imageWrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.shape {
+    position: absolute;
+    z-index: 1;
+    filter: blur(80px);
+    opacity: 0.4;
+}
+
+.shape1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-light);
+    top: -100px;
+    right: -50px;
+    border-radius: 50%;
+}
+
+.shape2 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    bottom: -50px;
+    left: -50px;
+    border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        height: 80vh;
+        /* Fixed height for mobile hero */
+        min-height: 600px;
+        flex-direction: column;
+        justify-content: flex-end;
+        /* Align text to bottom like reference */
+        padding-top: 80px;
+        /* Space for navbar */
+        padding-bottom: 4rem;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 100%;
+        margin-bottom: 0;
+        z-index: 10;
+        /* Ensure text pops against background */
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Restore absolute positioning for image on mobile */
+    .imageWrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .imageWrapper img {
+        /* Add linear gradient overlay via css or leave existing ::before on .hero */
+        object-position: center;
+    }
+
+    .title {
+        font-size: 2.75rem;
+        /* Larger title for impact */
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 2rem;
+    }
+
+    .badge {
+        background: var(--accent);
+        /* Restore accent color */
+        color: var(--primary-dark);
+        margin-bottom: 1.5rem;
+    }
+}
