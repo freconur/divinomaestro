@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import styles from './Footer.module.css';
@@ -10,7 +11,16 @@ export default function Footer() {
             <div className="container">
                 <div className={styles.grid}>
                     <div className={styles.brand}>
-                        <h3>Colegio Divino Maestro</h3>
+                        <div className={styles.brandHeader}>
+                            <Image
+                                src="/logo.svg"
+                                alt="Escudo Colegio Particular Divino Maestro"
+                                width={36}
+                                height={46}
+                                className={styles.footerLogoImg}
+                            />
+                            <h3>Colegio Divino Maestro</h3>
+                        </div>
                         <p>
                             Formando líderes con valores y una educación de excelencia preparada para los retos del futuro desde hace más de 20 años.
                         </p>
@@ -22,8 +32,11 @@ export default function Footer() {
                             <li><Link href="/">Inicio</Link></li>
                             <li><Link href="/nosotros">Nosotros</Link></li>
                             <li><Link href="/propuesta-educativa">Propuesta</Link></li>
+                            <li><Link href="/tecnologia">Tecnología</Link></li>
+                            <li><Link href="/profesores">Docentes</Link></li>
+                            <li><Link href="/contacto">Contacto</Link></li>
                             <li><Link href="/admisiones">Admisiones</Link></li>
-                            <li><Link href="/blog">Noticias</Link></li>
+                            <li><Link href="/matricula-2027">Matrícula 2027</Link></li>
                         </ul>
                     </div>
 

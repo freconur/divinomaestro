@@ -1,11 +1,15 @@
 .hero {
-    height: 60vh;
+    min-height: 440px;
+    height: auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
     background: var(--primary-dark);
     color: var(--white);
+    padding-top: 160px;
+    padding-bottom: 4.5rem;
 }
 
 .imageWrapper {
@@ -46,13 +50,88 @@
 }
 
 .contactInfoCard {
+    background: var(--slate-200);
+    padding: 4rem;
+    border-radius: 40px;
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.contactInfoCard::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    min-width: 600px;
+    min-height: 600px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        transparent 240deg,
+        rgba(187, 71, 69, 0.05) 260deg,
+        rgba(187, 71, 69, 0.5) 285deg,
+        var(--primary) 310deg,
+        var(--primary-light) 332deg,
+        var(--accent-gold) 350deg,
+        var(--accent-gold-light) 358deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    animation: rotateBorderBeam 3.6s linear infinite;
+    will-change: transform;
+}
+
+.contactInfoCard::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 4rem;
-    border-radius: 40px;
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    border-radius: 38px;
+    z-index: 1;
+    pointer-events: none;
+    transition: background-color 0.35s ease;
+}
+
+.contactInfoCard > * {
+    position: relative;
+    z-index: 2;
+}
+
+.contactInfoCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 40px -10px rgba(187, 71, 69, 0.16),
+        0 0 25px -4px rgba(245, 158, 11, 0.14);
+}
+
+.contactInfoCard:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotateBorderBeam {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contactInfoCard::before {
+        animation: none;
+    }
 }
 
 .infoItem {
@@ -175,7 +254,10 @@
 
 @media (max-width: 768px) {
     .hero {
-        height: 50vh;
+        height: auto;
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 3.5rem;
     }
 
     .title {

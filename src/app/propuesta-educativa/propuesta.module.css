@@ -1,11 +1,17 @@
 .hero {
-    height: 60vh;
+    min-height: 540px;
+    height: auto;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     overflow: hidden;
-    background: var(--primary-dark);
+    background: var(--slate-900);
     color: var(--white);
+    padding-top: 160px;
+    padding-bottom: 4.5rem;
+    text-align: center;
 }
 
 .imageWrapper {
@@ -14,131 +20,607 @@
     z-index: 1;
 }
 
-.imageWrapper img {
-    width: 100%;
-    height: 100%;
+.heroImage {
     object-fit: cover;
-    opacity: 0.4;
+    object-position: center;
+    filter: brightness(0.55) saturate(1.1);
 }
 
-.content {
-    position: relative;
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.75) 0%,
+        rgba(122, 40, 38, 0.6) 50%,
+        rgba(15, 23, 42, 0.9) 100%
+    );
     z-index: 2;
-    max-width: 800px;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heroBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(253, 253, 201, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(253, 253, 201, 0.35);
+    color: var(--accent);
+    padding: 0.4rem 1.2rem;
+    border-radius: 9999px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.25rem;
 }
 
 .title {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.25rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
     color: var(--white);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.titleHighlight {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 30px rgba(253, 253, 201, 0.35);
 }
 
 .description {
-    font-size: 1.25rem;
-    opacity: 0.9;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    max-width: 760px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.section {
-    padding: 8rem 0;
+/* SECTION: Pillars / Methodology */
+.pillarsSection {
+    padding: 6rem 0;
+    background: var(--background);
+}
+
+.sectionHeader {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 5rem;
+}
+
+.sectionTag {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+    background: rgba(187, 71, 69, 0.08);
+    padding: 0.35rem 0.9rem;
+    border-radius: 9999px;
+}
+
+.sectionTitle {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    color: var(--primary-dark);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: var(--slate-600);
+    line-height: 1.65;
 }
 
 .pillarDetails {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 5.5rem;
 }
 
 .pillarRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 4.5rem;
     align-items: center;
 }
 
-.pillarRow.reverse {
-    direction: rtl;
+.pillarRow.reverseRow {
+    grid-template-columns: 1fr 1fr;
 }
 
-.pillarRow.reverse .textPart {
-    direction: ltr;
+.pillarRow.reverseRow .textPart {
+    order: 1;
+}
+
+.pillarRow.reverseRow .imagePart {
+    order: 2;
 }
 
 .imagePart {
-    border-radius: 32px;
+    position: relative;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    height: 400px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+    height: 420px;
+    background: var(--slate-200);
 }
 
 .imagePart img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.textPart h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+.imagePart:hover img {
+    transform: scale(1.04);
+}
+
+.imageBadge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.imageBadgeIcon {
+    color: var(--accent-gold-light, #fef08a);
+}
+
+.textPart {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.pillarTag {
+    font-size: 0.8rem;
+    font-weight: 700;
     color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-.textPart p {
-    font-size: 1.1rem;
-    color: var(--slate-500);
+.pillarTitle {
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+    color: var(--primary-dark);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.pillarDesc {
+    font-size: 1.05rem;
+    color: var(--slate-600);
     line-height: 1.7;
 }
 
+.bulletList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.bulletItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.95rem;
+    color: var(--slate-700);
+    line-height: 1.5;
+}
+
+.bulletIcon {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* SECTION: Levels Grid */
 .levelsSection {
-    background: var(--background);
-    padding: 8rem 0;
+    background: var(--white);
+    padding: 6.5rem 0;
+    border-top: 1px solid var(--slate-200);
 }
 
 .levelGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.25rem;
 }
 
 .levelCard {
+    background: var(--slate-200);
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Rotating conic border beam (Antigravity style) */
+.levelCard::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    min-width: 600px;
+    min-height: 600px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        transparent 240deg,
+        rgba(187, 71, 69, 0.05) 260deg,
+        rgba(187, 71, 69, 0.5) 285deg,
+        var(--primary) 310deg,
+        var(--primary-light) 332deg,
+        var(--accent-gold) 350deg,
+        var(--accent-gold-light) 358deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    animation: rotateBorderBeam 3.6s linear infinite;
+    will-change: transform;
+}
+
+/* Inner card surface leaving a 2px animated border perimeter */
+.levelCard::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
     background: var(--white);
-    padding: 3rem;
-    border-radius: 32px;
-    border: 1px solid var(--slate-200);
-    transition: var(--transition-smooth);
-    text-align: center;
+    border-radius: 26px;
+    z-index: 1;
+    pointer-events: none;
+    transition: background-color 0.35s ease;
+}
+
+.levelCard > * {
+    position: relative;
+    z-index: 2;
 }
 
 .levelCard:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary);
+    transform: translateY(-8px);
+    box-shadow: 
+        0 20px 40px -10px rgba(187, 71, 69, 0.2),
+        0 0 25px -4px rgba(245, 158, 11, 0.14);
 }
 
-@media (max-width: 768px) {
+.levelCard:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotateBorderBeam {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .levelCard::before {
+        animation: none;
+    }
+}
+
+.levelImageWrapper {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    background: var(--slate-100);
+}
+
+.levelImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.levelCard:hover .levelImage {
+    transform: scale(1.06);
+}
+
+.levelAgesBadge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(122, 40, 38, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.775rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.levelBody {
+    padding: 2rem 1.75rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.levelTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 0.65rem;
+}
+
+.levelDescription {
+    font-size: 0.95rem;
+    color: var(--slate-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.levelFeatureList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid var(--slate-100);
+    padding-top: 1.25rem;
+}
+
+.levelFeatureItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--slate-700);
+    font-weight: 500;
+}
+
+.levelFeatureIcon {
+    color: #16a34a;
+    flex-shrink: 0;
+}
+
+.levelBtn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.925rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.levelBtnArrow {
+    transition: transform 0.2s ease;
+}
+
+.levelBtn:hover .levelBtnArrow {
+    transform: translateX(4px);
+}
+
+/* SECTION: Admissions CTA Banner */
+.ctaSection {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #4a1514 100%);
+    padding: 5.5rem 0;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaSection::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(253, 253, 201, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.ctaInner {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ctaBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(253, 253, 201, 0.18);
+    border: 1px solid rgba(253, 253, 201, 0.4);
+    color: var(--accent);
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+}
+
+.ctaTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.ctaDesc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    max-width: 680px;
+}
+
+.ctaActions {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ctaPrimaryBtn {
+    background: var(--white);
+    color: var(--primary-dark);
+    padding: 0.95rem 2.2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: var(--transition-smooth);
+}
+
+.ctaPrimaryBtn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.ctaSecondaryBtn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: var(--white);
+    padding: 0.95rem 2.2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.ctaSecondaryBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .pillarRow,
+    .pillarRow.reverseRow {
+        gap: 2.5rem;
+    }
+
+    .levelGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .levelBody {
+        padding: 1.5rem 1.25rem 1.75rem;
+    }
+}
+
+@media (max-width: 860px) {
     .hero {
-        height: 50vh;
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
-
-    .pillarRow {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .pillarRow.reverse {
-        direction: ltr;
-        /* Reset direction */
-    }
-
-    .imagePart {
-        height: 250px;
+        padding-top: 120px;
+        padding-bottom: 3.5rem;
+        min-height: auto;
+        height: auto;
     }
 
     .levelGrid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    .pillarRow,
+    .pillarRow.reverseRow {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pillarRow.reverseRow .textPart {
+        order: 2;
+    }
+
+    .pillarRow.reverseRow .imagePart {
+        order: 1;
+    }
+
+    .imagePart {
+        height: 280px;
+    }
+
+    .pillarsSection,
+    .levelsSection {
+        padding: 4.5rem 0;
+    }
+
+    .ctaActions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .ctaPrimaryBtn,
+    .ctaSecondaryBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

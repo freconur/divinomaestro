@@ -1,0 +1,427 @@
+.trajectory {
+    background: #ffffff;
+    position: relative;
+    padding: 5rem 0 5.5rem;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Objeto decorativo SVG (shape_3) con color del branding (#bb4745) en el margen derecho y fade hacia la izquierda */
+.decorativeShapeWrapper {
+    position: absolute;
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%);
+    width: 580px;
+    height: 580px;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+}
+
+.decorativeShapeSvg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+/* Left Column */
+.leftCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.headline {
+    font-size: clamp(1.9rem, 2.8vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.24;
+    letter-spacing: -0.025em;
+    color: #0f2c42; /* Deep institutional navy matching reference */
+    margin-bottom: 2.25rem;
+}
+
+/* Gradient highlight matching reference image */
+.gradientHighlight {
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 60%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+    font-weight: 800;
+}
+
+/* Numerical Data Cards Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.statCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--slate-200);
+    border-radius: 20px;
+    padding: 1.35rem 1.6rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.statCard::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    min-width: 500px;
+    min-height: 500px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        transparent 240deg,
+        rgba(187, 71, 69, 0.05) 260deg,
+        rgba(187, 71, 69, 0.5) 285deg,
+        var(--primary) 310deg,
+        var(--primary-light) 332deg,
+        var(--accent-gold) 350deg,
+        var(--accent-gold-light) 358deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.statCard::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--white);
+    border-radius: 18px;
+    z-index: 1;
+    pointer-events: none;
+    transition: background-color 0.35s ease;
+}
+
+.statCard > * {
+    position: relative;
+    z-index: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .statCard:hover {
+        transform: translateY(-5px);
+        box-shadow: 
+            0 18px 36px -8px rgba(187, 71, 69, 0.16),
+            0 0 22px -4px rgba(245, 158, 11, 0.14);
+    }
+
+    .statCard:hover::before {
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .statCard:hover::before {
+            will-change: transform;
+            animation: rotateBorderBeam 3.6s linear infinite;
+        }
+    }
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.statHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+}
+
+.statNumber {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f2c42;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.iconCircle {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(234, 88, 12, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.statCard:hover .iconCircle {
+    background: rgba(187, 71, 69, 0.12);
+    transform: scale(1.08);
+}
+
+.statIcon {
+    color: #ea580c;
+    transition: color 0.3s ease;
+}
+
+.statCard:hover .statIcon {
+    color: var(--primary);
+}
+
+.statLabel {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--slate-700);
+    line-height: 1.3;
+}
+
+/* Right Column: Visual Media Card */
+.rightCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mediaCard {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -10px rgba(15, 44, 66, 0.18), 0 4px 14px rgba(0, 0, 0, 0.05);
+    background: var(--slate-900);
+}
+
+.mediaImage {
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mediaCard:hover .mediaImage {
+    transform: scale(1.05);
+}
+
+.mediaOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.45) 100%);
+    z-index: 1;
+}
+
+/* Center Play Button indicator */
+.playButtonWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playButtonPulse {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .playButtonPulse {
+        animation: pulseGlow 2.4s infinite ease-out;
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}
+
+.playButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.playIcon {
+    color: #0f2c42;
+    margin-left: 3px;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.mediaCard:hover .playButton {
+    transform: scale(1.1);
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(234, 88, 12, 0.35);
+}
+
+.mediaCard:hover .playIcon {
+    color: #ea580c;
+}
+
+/* Floating bottom badge on the image */
+.mediaFooter {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    z-index: 2;
+    background: rgba(15, 44, 66, 0.72);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 0.65rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.mediaTag {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+.mediaSub {
+    font-size: 0.74rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.1rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.25rem;
+    }
+
+    .headline {
+        margin-bottom: 1.75rem;
+    }
+
+    .statsGrid {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .trajectory {
+        padding: 4rem 0;
+    }
+
+    .decorativeShapeWrapper {
+        width: 360px;
+        height: 360px;
+        right: -60px;
+        top: auto;
+        bottom: -30px;
+        transform: none;
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .mediaCard {
+        aspect-ratio: 16 / 10;
+        max-width: 580px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .trajectory {
+        padding: 3.5rem 0;
+    }
+
+    .decorativeShapeWrapper {
+        width: 270px;
+        height: 270px;
+        right: -40px;
+        bottom: -20px;
+    }
+
+    .headline {
+        font-size: 1.65rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .mediaCard {
+        border-radius: 20px;
+    }
+
+    .playButton {
+        width: 54px;
+        height: 54px;
+    }
+
+    .playIcon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@keyframes rotateBorderBeam {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .statCard::before {
+        animation: none;
+    }
+}

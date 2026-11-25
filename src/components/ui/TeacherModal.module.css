@@ -1,0 +1,323 @@
+.dialog {
+    border: none;
+    border-radius: 28px;
+    padding: 0;
+    max-width: 680px;
+    width: 92vw;
+    background: var(--white);
+    box-shadow: 0 25px 60px -10px rgba(15, 23, 42, 0.35);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    overflow: hidden;
+    color: var(--foreground);
+    overscroll-behavior: contain;
+}
+
+.dialog::backdrop {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+
+.modalContainer {
+    max-height: 85vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Header */
+.modalHeader {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #4a1514 100%);
+    padding: 2.25rem 2rem 2rem;
+    position: relative;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    z-index: 10;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.avatarWrapper {
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(253, 253, 201, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    background: var(--slate-800);
+}
+
+.avatarImage {
+    object-fit: cover;
+    object-position: top center;
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex-grow: 1;
+}
+
+.levelPill {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    background: rgba(253, 253, 201, 0.2);
+    border: 1px solid rgba(253, 253, 201, 0.35);
+    color: var(--accent);
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.teacherName {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.teacherRole {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+/* Modal Body */
+.modalBody {
+    padding: 2rem 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.sectionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--slate-100);
+    padding-bottom: 0.4rem;
+}
+
+.sectionIcon {
+    color: var(--primary);
+}
+
+/* Timeline / Items */
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.itemRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.itemDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.itemTitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    line-height: 1.3;
+}
+
+.itemSubtitle {
+    font-size: 0.85rem;
+    color: var(--slate-600);
+    line-height: 1.4;
+    margin-top: 0.15rem;
+}
+
+.itemPeriod {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.1rem;
+}
+
+/* Quote Box */
+.quoteBox {
+    background: linear-gradient(135deg, rgba(253, 253, 201, 0.25) 0%, rgba(187, 71, 69, 0.04) 100%);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 16px 16px 0;
+    padding: 1.1rem 1.25rem;
+    font-size: 0.925rem;
+    font-style: italic;
+    color: var(--slate-700);
+    line-height: 1.55;
+    position: relative;
+}
+
+/* Office Hours & Tags */
+.tagsRow {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tagPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(187, 71, 69, 0.06);
+    color: var(--primary-dark);
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.tagIcon {
+    color: #16a34a;
+}
+
+.officeHoursBox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--slate-100);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.825rem;
+    color: var(--slate-700);
+    font-weight: 500;
+}
+
+.officeHoursIcon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Modal Footer */
+.modalFooter {
+    padding: 1.25rem 2rem 1.75rem;
+    border-top: 1px solid var(--slate-200);
+    background: var(--slate-50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.appointmentBtn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.appointmentBtn:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    color: var(--white);
+}
+
+.closeTextBtn {
+    background: none;
+    border: 1px solid var(--slate-300);
+    color: var(--slate-600);
+    padding: 0.75rem 1.4rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.closeTextBtn:hover {
+    background: var(--slate-200);
+    color: var(--slate-800);
+}
+
+@media (max-width: 640px) {
+    .modalHeader {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .levelPill {
+        align-self: center;
+    }
+
+    .modalBody {
+        padding: 1.5rem 1.25rem;
+        gap: 1.5rem;
+    }
+
+    .modalFooter {
+        flex-direction: column-reverse;
+        padding: 1rem 1.25rem 1.5rem;
+    }
+
+    .appointmentBtn,
+    .closeTextBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

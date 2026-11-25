@@ -1,8 +1,8 @@
 "use client";
 
-import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 import styles from './WhatsAppButton.module.css';
 
 export default function WhatsAppButton() {
@@ -11,40 +11,32 @@ export default function WhatsAppButton() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(true);
-        }, 2000); // Show after 2 seconds
+        }, 1200);
         return () => clearTimeout(timer);
     }, []);
 
-    const whatsappNumber = "5112345678"; // Generic number, should be updated by user
-    const message = encodeURIComponent("¡Hola! Me gustaría recibir información sobre el proceso de matrícula 2026.");
+    const whatsappNumber = "51987654321";
+    const message = encodeURIComponent("¡Hola! Me gustaría recibir información sobre el proceso de matrícula 2027.");
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
     return (
         <AnimatePresence>
             {isVisible && (
                 <div className={styles.wrapper}>
-                    <motion.div
-                        className={styles.badge}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5, duration: 0.5 }}
-                    >
-                        <span>Comienza tu matrícula por WhatsApp</span>
-                        <div className={styles.badgeArrow}></div>
-                    </motion.div>
-
                     <motion.a
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.button}
-                        initial={{ scale: 0, rotate: -45 }}
-                        animate={{ scale: 1, rotate: 0 }}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
                         whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        whileTap={{ scale: 0.92 }}
                         aria-label="Contactar por WhatsApp"
                     >
-                        <MessageCircle size={32} fill="currentColor" />
+                        <span className={styles.pulseRing} aria-hidden="true" />
+                        <WhatsAppIcon size={32} />
                     </motion.a>
                 </div>
             )}

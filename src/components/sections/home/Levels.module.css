@@ -1,114 +1,587 @@
 .levels {
-    background: var(--background);
-    padding: 8rem 0;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 5rem;
-}
-
-.title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-}
-
-.card {
+    background: #ffffff;
+    padding: 5.5rem 0 6rem;
     position: relative;
-    border-radius: 32px;
     overflow: hidden;
-    height: 500px;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-}
-
-.imageWrapper {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-}
-
-.imageWrapper img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition-smooth);
 }
 
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 45, 107, 0.9), transparent);
+/* Section Header */
+.sectionHeader {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 5rem;
+    position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 3rem;
-    color: var(--white);
-    transition: var(--transition-smooth);
 }
 
-.card:hover .imageWrapper img {
-    transform: scale(1.1);
-}
-
-.card:hover .overlay {
-    background: linear-gradient(to top, var(--primary-dark), transparent);
-}
-
-.levelTitle {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-}
-
-.ageRange {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.9rem;
+.kicker {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--primary);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     display: block;
 }
 
+.sectionTitle {
+    font-size: clamp(2rem, 3.8vw, 2.85rem);
+    color: var(--primary-dark);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+}
+
+.titleHighlight {
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+}
+
+.titleHighlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+    border-radius: 2px;
+}
+
+.sectionSubtitle {
+    color: var(--slate-600);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* =========================================================================
+   FULL-WIDTH SHOWCASE ROWS (WITH PARALLAX)
+   ========================================================================= */
+
+.rowsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6.5rem;
+    margin-bottom: 5.5rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.levelRow {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: stretch;
+    width: 100%;
+    min-height: 560px;
+    position: relative;
+}
+
+/* Reversed Row (Primaria: Image Left, Text Right) */
+.rowReversed {
+    grid-template-columns: 1.15fr 1fr;
+}
+
+.rowReversed .imageCol {
+    order: 1;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+    box-shadow: 10px 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.rowReversed .floatingHighlight {
+    left: auto;
+    right: 2.5rem;
+}
+
+.rowReversed .contentCol {
+    order: 2;
+    padding: 2.5rem max(2rem, calc((100vw - 1360px) / 2 + 2rem)) 2.5rem 3.5rem;
+}
+
+.rowReversed .bgWatermarkNumber {
+    left: auto;
+    right: 4%;
+}
+
+/* Content Column */
+.contentCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 3.5rem 2.5rem max(2rem, calc((100vw - 1360px) / 2 + 2rem));
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Giant Parallax Watermark Number */
+.bgWatermarkNumber {
+    position: absolute;
+    top: 5%;
+    left: 4%;
+    font-size: clamp(8rem, 16vw, 15rem);
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.04;
+    font-family: 'Outfit', sans-serif;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    will-change: transform;
+}
+
+.textInner {
+    max-width: 580px;
+    position: relative;
+    z-index: 2;
+}
+
+.levelEyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.levelNumber {
+    font-family: monospace, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.divider {
+    opacity: 0.4;
+}
+
+.dot {
+    opacity: 0.4;
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+.levelStage {
+    font-size: 0.78rem;
+    opacity: 0.8;
+}
+
+/* Headline */
+.headline {
+    font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    margin: 0 0 0.85rem 0;
+    letter-spacing: -0.025em;
+}
+
+.subheadline {
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 1.15rem 0;
+}
+
 .description {
-    opacity: 0.9;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    transform: translateY(20px);
-    transition: var(--transition-smooth);
+    font-size: 0.98rem;
+    color: var(--slate-600);
+    line-height: 1.7;
+    margin: 0 0 1.75rem 0;
 }
 
-.card:hover .description {
-    transform: translateY(0);
+/* Bullets */
+.bulletList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-.cta {
+.bulletItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--slate-700);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    flex-shrink: 0;
+}
+
+/* Action button */
+.actionWrap {
+    display: flex;
+    align-items: center;
+}
+
+.ctaButton {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: var(--accent);
-    transition: var(--transition-smooth);
+    gap: 0.65rem;
+    padding: 0.85rem 1.85rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
-.cta:hover {
-    gap: 1rem;
+.ctaArrow {
+    transition: transform 0.25s ease;
 }
 
-@media (max-width: 768px) {
-    .grid {
+.ctaButton:hover {
+    transform: translateY(-2px);
+}
+
+.ctaButton:hover .ctaArrow {
+    transform: translateX(4px);
+}
+
+/* =========================================================================
+   IMAGE COLUMN (WITH PARALLAX GLIDE)
+   ========================================================================= */
+
+.imageCol {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    overflow: hidden;
+    background: var(--slate-900);
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+    box-shadow: -10px 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+/* Enlarged wrapper allowing smooth parallax motion without clipping */
+.imageWrapper {
+    position: absolute;
+    inset: -10% 0;
+    width: 100%;
+    height: 120%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.parallaxMotionWrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+.rowImg {
+    object-fit: cover;
+    object-position: center;
+}
+
+.imgOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Floating Highlight Badge */
+.floatingHighlight {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 9999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08);
+    pointer-events: auto;
+    will-change: transform;
+}
+
+.highlightIcon {
+    flex-shrink: 0;
+}
+
+/* =========================================================================
+   LEVEL-SPECIFIC IDENTITIES
+   ========================================================================= */
+
+/* 1. Nivel Inicial (Crema / Ámbar) */
+.row_inicial .levelEyebrow {
+    color: #b45309;
+}
+
+.row_inicial .subheadline {
+    color: #b45309;
+}
+
+.row_inicial .checkIcon {
+    color: #d97706;
+}
+
+.row_inicial .bgWatermarkNumber {
+    color: #f59e0b;
+}
+
+.row_inicial .ctaButton {
+    background: var(--accent);
+    color: var(--primary-dark);
+    font-weight: 800;
+    border-color: rgba(122, 40, 38, 0.22);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.18), 0 2px 6px rgba(122, 40, 38, 0.08);
+}
+
+.row_inicial .ctaButton:hover {
+    background: #ffffff;
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 8px 22px rgba(187, 71, 69, 0.25);
+}
+
+.row_inicial .imgOverlay {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(66, 45, 22, 0.65) 100%);
+}
+
+.row_inicial .floatingHighlight {
+    background: rgba(255, 255, 255, 0.96);
+    color: #92400e;
+    border: 1.5px solid rgba(245, 158, 11, 0.4);
+}
+
+.row_inicial .highlightIcon {
+    color: #d97706;
+}
+
+/* 2. Nivel Primaria (Rojo Vino Institucional) */
+.row_primaria .levelEyebrow {
+    color: var(--primary);
+}
+
+.row_primaria .subheadline {
+    color: var(--primary);
+}
+
+.row_primaria .checkIcon {
+    color: var(--primary);
+}
+
+.row_primaria .bgWatermarkNumber {
+    color: var(--primary);
+}
+
+.row_primaria .ctaButton {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.row_primaria .ctaButton:hover {
+    box-shadow: 0 8px 24px rgba(187, 71, 69, 0.45);
+}
+
+.row_primaria .imgOverlay {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(89, 27, 26, 0.72) 100%);
+}
+
+.row_primaria .floatingHighlight {
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--primary-dark);
+    border: 1.5px solid rgba(187, 71, 69, 0.4);
+}
+
+.row_primaria .highlightIcon {
+    color: var(--primary);
+}
+
+/* 3. Nivel Secundaria (Plomo & Preuniversitario) */
+.row_secundaria .levelEyebrow {
+    color: var(--slate-700);
+}
+
+.row_secundaria .subheadline {
+    color: var(--slate-800);
+}
+
+.row_secundaria .checkIcon {
+    color: var(--slate-800);
+}
+
+.row_secundaria .bgWatermarkNumber {
+    color: var(--slate-900);
+}
+
+.row_secundaria .ctaButton {
+    background: linear-gradient(135deg, var(--brand-gray) 0%, #6e6e6e 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(135, 135, 135, 0.35);
+}
+
+.row_secundaria .ctaButton:hover {
+    background: linear-gradient(135deg, #9e9e9e 0%, var(--brand-gray) 100%);
+    box-shadow: 0 8px 24px rgba(135, 135, 135, 0.45);
+}
+
+.row_secundaria .imgOverlay {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+
+.row_secundaria .floatingHighlight {
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--slate-900);
+    border: 1.5px solid rgba(15, 23, 42, 0.16);
+}
+
+.row_secundaria .highlightIcon {
+    color: var(--primary);
+}
+
+/* =========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================= */
+
+@media (max-width: 1080px) {
+    .levelRow,
+    .rowReversed {
         grid-template-columns: 1fr;
     }
 
-    .card {
-        height: 400px;
+    .imageCol,
+    .rowReversed .imageCol {
+        min-height: 420px;
+        border-radius: 28px;
+        margin: 0 1.5rem;
+        width: auto;
+        order: -1 !important;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    }
+
+    .imageWrapper {
+        min-height: 420px;
+    }
+
+    .floatingHighlight,
+    .rowReversed .floatingHighlight {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: auto;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.86rem;
+    }
+
+    .contentCol,
+    .rowReversed .contentCol {
+        padding: 2.5rem 1.5rem;
+        order: 1 !important;
+    }
+
+    .rowsContainer {
+        gap: 4.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .levels {
+        padding: 4.5rem 0 3.5rem;
+    }
+
+    .sectionHeader {
+        margin-bottom: 3.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.85rem;
+    }
+
+    .headline {
+        font-size: 1.85rem;
+    }
+
+    .subheadline {
+        font-size: 1.05rem;
+    }
+
+    .description {
+        font-size: 0.94rem;
+    }
+
+    .imageCol,
+    .rowReversed .imageCol {
+        min-height: 280px;
+        border-radius: 20px;
+        margin: 0 1rem;
+    }
+
+    .imageWrapper {
+        min-height: 280px;
+    }
+
+    .floatingHighlight,
+    .rowReversed .floatingHighlight {
+        bottom: 1.25rem;
+        left: 1.25rem;
+        right: auto;
+        padding: 0.55rem 1.1rem;
+        font-size: 0.8rem;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .imageWrapper {
+        inset: 0;
+        height: 100%;
+    }
+
+    .parallaxMotionWrap,
+    .floatingHighlight,
+    .bgWatermarkNumber {
+        will-change: auto;
+    }
+
+    .contentCol,
+    .rowReversed .contentCol {
+        padding: 2rem 1rem;
+    }
+
+    .ctaButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rowsContainer {
+        gap: 3.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallaxMotionWrap,
+    .bgWatermarkNumber,
+    .floatingHighlight {
+        transform: none !important;
     }
 }

@@ -1,92 +1,548 @@
 .location {
-    padding: 8rem 0;
-    background: var(--white);
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     position: relative;
+    overflow: hidden;
+    width: 100%;
 }
 
+.wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* SECTION HEADER */
 .header {
     text-align: center;
-    margin-bottom: 4rem;
+    max-width: 720px;
+    margin: 0 auto 3rem;
 }
 
-.subtitle {
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    background: rgba(187, 71, 69, 0.08);
+    border: 1px solid rgba(187, 71, 69, 0.18);
     color: var(--primary);
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
+    letter-spacing: 0.8px;
     margin-bottom: 1rem;
-    display: block;
 }
 
 .title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.65rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.02em;
 }
 
-.container {
+.description {
+    font-size: 1.05rem;
+    color: var(--slate-600);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* MAIN LAYOUT GRID */
+.layoutGrid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: start;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 2.25rem;
+    align-items: stretch;
 }
 
-.infoCard {
-    background: var(--background);
-    padding: 3rem;
-    border-radius: 32px;
-    border: 1px solid var(--slate-100);
-}
-
-.contactItem {
+/* LEFT COLUMN: COMPACT CONTACT PANEL */
+.channelsCol {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    flex-direction: column;
 }
 
-.iconWrapper {
-    width: 50px;
-    height: 50px;
-    background: var(--accent);
+.contactPanelCard {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 1.85rem;
+    border: 1px solid var(--slate-200);
+    box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.07);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.panelHeader {
+    margin-bottom: 1.35rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.panelBadge {
+    display: inline-block;
+    background: rgba(187, 71, 69, 0.08);
     color: var(--primary);
-    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    margin-bottom: 0.4rem;
+}
+
+.panelTitle {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin: 0 0 0.25rem;
+    line-height: 1.25;
+}
+
+.panelSubtitle {
+    font-size: 0.86rem;
+    color: var(--slate-500);
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* COMPACT LIST & ROWS */
+.compactList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.compactRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.rowContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.rowHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.rowLabel {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rowValueBox {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 8px;
+    padding: 0.35rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.rowValue {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--slate-800);
+    user-select: all;
+    letter-spacing: -0.01em;
+    overflow-wrap: break-word;
+}
+
+.rowHint {
+    font-size: 0.78rem;
+    color: var(--slate-500);
+    line-height: 1.35;
+}
+
+.rowDivider {
+    height: 1px;
+    background: var(--slate-100);
+    width: 100%;
+}
+
+/* ICONS BOXES */
+.iconBoxEmail {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(187, 71, 69, 0.12);
+    color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin-top: 0.1rem;
 }
 
-.itemText h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
+.iconBoxPhone {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.iconBoxClock {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--slate-100);
+    color: var(--slate-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* BADGES */
+.rowBadge {
+    font-size: 0.68rem;
+    font-weight: 700;
     color: var(--primary);
+    background: #fee2e2;
+    border: 1px solid rgba(187, 71, 69, 0.2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
 }
 
-.itemText p {
+.rowBadgeAmber {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #b45309;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.rowBadgeSlate {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--slate-700);
+    background: var(--slate-100);
+    border: 1px solid var(--slate-200);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+/* RIGHT COLUMN: CAMPUS & MAP */
+.mapCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.campusCard {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--slate-200);
+    padding: 1.85rem;
+    box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.07);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.campusHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.campusIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px var(--primary-glow);
+}
+
+.campusMeta {
+    flex: 1;
+}
+
+.campusTopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.campusBadge {
+    display: inline-block;
+    background: #fee2e2;
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+}
+
+.campusCity {
+    font-size: 0.78rem;
+    font-weight: 700;
     color: var(--slate-500);
-    line-height: 1.5;
 }
 
-.mapWrapper {
-    height: 500px;
-    border-radius: 32px;
+.campusName {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin: 0 0 0.25rem;
+    line-height: 1.25;
+}
+
+.campusAddress {
+    font-size: 0.9rem;
+    color: var(--slate-600);
+    font-weight: 500;
+    margin: 0;
+}
+
+.campusFeaturesBar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.15rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.campusPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--slate-100);
+    color: var(--slate-700);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+}
+
+.pillDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+/* MAP CONTAINER */
+.mapContainer {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--slate-100);
+    border: 1px solid var(--slate-200);
+    background: var(--slate-100);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.mapWrapper iframe {
+.mapIframe {
     width: 100%;
     height: 100%;
     border: none;
+    display: block;
 }
 
-@media (max-width: 992px) {
-    .container {
-        grid-template-columns: 1fr;
+/* CAMPUS FOOTER */
+.campusFooter {
+    margin-top: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.visitNotice {
+    flex: 1;
+    min-width: 220px;
+}
+
+.visitNotice p {
+    font-size: 0.82rem;
+    color: var(--slate-600);
+    line-height: 1.45;
+    margin: 0;
+}
+
+.mapsBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 0.75rem 1.35rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 14px var(--primary-glow);
+    white-space: nowrap;
+}
+
+.mapsBtn:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(187, 71, 69, 0.35);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .location {
+        padding: 4.5rem 0;
     }
 
-    .mapWrapper {
-        height: 400px;
+    .layoutGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .mapContainer {
+        height: 300px;
+    }
+}
+
+@media (max-width: 640px) {
+    .location {
+        padding: 3rem 0;
+    }
+
+    .header {
+        margin-bottom: 1.75rem;
+    }
+
+    .title {
+        font-size: 1.9rem;
+    }
+
+    .description {
+        font-size: 0.92rem;
+    }
+
+    .layoutGrid {
+        gap: 1.25rem;
+    }
+
+    .contactPanelCard {
+        padding: 1.15rem 1rem;
+        border-radius: 18px;
+    }
+
+    .panelHeader {
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .panelTitle {
+        font-size: 1.15rem;
+        margin-bottom: 0;
+    }
+
+    .panelSubtitle,
+    .rowHint,
+    .rowBadge,
+    .rowBadgeAmber,
+    .rowBadgeSlate {
+        display: none;
+    }
+
+    .compactList {
+        gap: 0.7rem;
+    }
+
+    .compactRow {
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .iconBoxEmail,
+    .iconBoxPhone,
+    .iconBoxClock {
+        width: 34px;
+        height: 34px;
+        margin-top: 0;
+    }
+
+    .rowContent {
+        gap: 0.1rem;
+    }
+
+    .rowLabel {
+        font-size: 0.7rem;
+    }
+
+    .rowValueBox {
+        background: transparent;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .rowValue {
+        font-size: clamp(0.82rem, 3.6vw, 0.92rem);
+    }
+
+    .campusCard {
+        padding: 1.25rem 1rem;
+        border-radius: 18px;
+    }
+
+    .campusHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+    }
+
+    .campusFooter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mapsBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

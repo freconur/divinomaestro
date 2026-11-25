@@ -1,0 +1,251 @@
+.section {
+    padding: 6rem 0;
+    background: var(--background);
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 3.5rem auto;
+}
+
+.subtitle {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+}
+
+.title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--primary-dark);
+    margin-bottom: 1.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.lead {
+    font-size: 1.15rem;
+    color: var(--slate-600);
+    line-height: 1.7;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.card {
+    background: var(--slate-200);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Rotating conic border beam (Antigravity style) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    min-width: 600px;
+    min-height: 600px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        transparent 240deg,
+        rgba(187, 71, 69, 0.05) 260deg,
+        rgba(187, 71, 69, 0.5) 285deg,
+        var(--primary) 310deg,
+        var(--primary-light) 332deg,
+        var(--accent-gold) 350deg,
+        var(--accent-gold-light) 358deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    animation: rotateBorderBeam 3.6s linear infinite;
+    will-change: transform;
+}
+
+/* Inner card surface leaving a 2px animated border perimeter */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--white);
+    border-radius: 18px;
+    z-index: 1;
+    pointer-events: none;
+    transition: background-color 0.35s ease;
+}
+
+.card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 40px -10px rgba(187, 71, 69, 0.16),
+        0 0 25px -4px rgba(245, 158, 11, 0.14);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotateBorderBeam {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card::before {
+        animation: none;
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.iconCircle {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.valueTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    line-height: 1.3;
+}
+
+.valueDesc {
+    font-size: 0.98rem;
+    color: var(--slate-600);
+    line-height: 1.65;
+}
+
+/* Color Themes */
+.red .iconCircle {
+    background: rgba(187, 71, 69, 0.12);
+    color: var(--primary);
+}
+.red:hover {
+    border-color: rgba(187, 71, 69, 0.4);
+}
+.red:hover .iconCircle {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.blue .iconCircle {
+    background: rgba(37, 99, 235, 0.12);
+    color: #2563eb;
+}
+.blue:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+}
+.blue:hover .iconCircle {
+    background: #2563eb;
+    color: var(--white);
+}
+
+.rose .iconCircle {
+    background: rgba(225, 29, 72, 0.12);
+    color: #e11d48;
+}
+.rose:hover {
+    border-color: rgba(225, 29, 72, 0.4);
+}
+.rose:hover .iconCircle {
+    background: #e11d48;
+    color: var(--white);
+}
+
+.gold .iconCircle {
+    background: rgba(217, 119, 6, 0.12);
+    color: #d97706;
+}
+.gold:hover {
+    border-color: rgba(217, 119, 6, 0.4);
+}
+.gold:hover .iconCircle {
+    background: #d97706;
+    color: var(--white);
+}
+
+.purple .iconCircle {
+    background: rgba(147, 51, 234, 0.12);
+    color: #9333ea;
+}
+.purple:hover {
+    border-color: rgba(147, 51, 234, 0.4);
+}
+.purple:hover .iconCircle {
+    background: #9333ea;
+    color: var(--white);
+}
+
+.emerald .iconCircle {
+    background: rgba(13, 148, 136, 0.12);
+    color: #0d9488;
+}
+.emerald:hover {
+    border-color: rgba(13, 148, 136, 0.4);
+}
+.emerald:hover .iconCircle {
+    background: #0d9488;
+    color: var(--white);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 4.5rem 0;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}

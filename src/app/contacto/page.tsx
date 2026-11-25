@@ -94,7 +94,7 @@ export default function ContactoPage() {
                                     </div>
                                     <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
                                         <label>Interés Académico</label>
-                                        <input type="text" placeholder="Ej. Vacantes para Primaria 2026" />
+                                        <input type="text" placeholder="Ej. Vacantes para Primaria 2027" />
                                     </div>
                                     <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
                                         <label>Tu Consulta</label>

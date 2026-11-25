@@ -1,196 +1,343 @@
 .hero {
-    height: 100vh;
+    min-height: min(800px, 88vh);
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
-    background: var(--primary-dark);
+    padding-top: 150px;
+    padding-bottom: 4rem;
+    background: var(--slate-900);
+    border-bottom-left-radius: clamp(28px, 4.5vw, 52px);
+    border-bottom-right-radius: clamp(28px, 4.5vw, 52px);
+    box-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.2);
+    isolation: isolate;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.4) 0%,
-            rgba(0, 0, 0, 0.6) 100%);
-    z-index: 2;
-}
-
-.content {
-    position: relative;
-    z-index: 3;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 0 1rem;
-}
-
-.badge {
-    display: inline-block;
-    padding: 0.6rem 1.4rem;
-    background: var(--accent);
-    color: var(--primary-dark);
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.title {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    color: var(--white);
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.title span {
-    color: var(--primary);
-    position: relative;
-}
-
-.title span::after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: var(--accent);
-    z-index: -1;
-    opacity: 0.5;
-}
-
-.description {
-    font-size: 1.4rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 3.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.actions {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.secondaryBtn {
-    padding: 0.8rem 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--primary);
-    background: var(--white);
-    color: var(--primary);
-    font-weight: 600;
-    transition: var(--transition-smooth);
-}
-
-.secondaryBtn:hover {
-    background: var(--primary-light);
-    color: var(--white);
-    border-color: var(--primary-light);
-}
-
+/* Background image & gradient overlay */
 .imageWrapper {
     position: absolute;
     inset: 0;
     z-index: 1;
+    overflow: hidden;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
-.imageWrapper img {
-    width: 100%;
-    height: 100%;
+.heroImage {
     object-fit: cover;
-    filter: brightness(0.8);
+    object-position: center;
+    filter: brightness(1.02) saturate(1.06);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
-.shape {
+.overlay {
     position: absolute;
-    z-index: 1;
-    filter: blur(80px);
-    opacity: 0.4;
+    inset: 0;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background:
+        /* Top bar subtle scrim: only for the navbar height */
+        linear-gradient(180deg, rgba(15, 23, 42, 0.42) 0%, rgba(15, 23, 42, 0.15) 75px, transparent 130px),
+        /* Minimal left scrim: ultra soft tint just to support text readability without feeling dark */
+        linear-gradient(90deg, rgba(15, 23, 42, 0.48) 0%, rgba(15, 23, 42, 0.3) 32%, rgba(15, 23, 42, 0.1) 58%, transparent 75%),
+        /* Bottom subtle fade to blend with next section */
+        linear-gradient(0deg, rgba(15, 23, 42, 0.2) 0%, transparent 80px);
+    z-index: 2;
 }
 
-.shape1 {
-    width: 400px;
-    height: 400px;
-    background: var(--primary-light);
-    top: -100px;
-    right: -50px;
+/* Ambient glows (pure radial-gradient: 0ms GPU blur cost) */
+.glowShape {
+    position: absolute;
     border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
 }
 
-.shape2 {
-    width: 300px;
-    height: 300px;
-    background: var(--accent);
-    bottom: -50px;
-    left: -50px;
-    border-radius: 50%;
+.glow1 {
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(187, 71, 69, 0.28) 0%, transparent 70%);
+    top: -140px;
+    left: -140px;
 }
 
-@media (max-width: 1024px) {
+.glow2 {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, transparent 70%);
+    bottom: -120px;
+    left: 16%;
+}
+
+@media (max-width: 767px) {
+    .glowShape {
+        display: none;
+    }
+}
+
+/* Container & Content */
+.container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 4rem;
+}
+
+.content {
+    max-width: 680px;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Headline */
+.title {
+    font-size: clamp(2.35rem, 5vw, 4rem);
+    line-height: 1.15;
+    color: var(--white);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.titleHighlight {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Description */
+.description {
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    color: #ffffff;
+    max-width: 600px;
+    margin-bottom: 2.25rem;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    font-weight: 450;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.25rem;
+}
+
+.primaryBtn {
+    padding: 0.95rem 2.25rem;
+    font-size: 1.05rem;
+    box-shadow: 0 8px 24px -4px rgba(187, 71, 69, 0.6);
+}
+
+.btnArrow {
+    transition: transform 0.25s ease;
+}
+
+.primaryBtn:hover .btnArrow {
+    transform: translateX(4px);
+}
+
+.secondaryBtn {
+    padding: 0.95rem 2.25rem;
+    font-size: 1.05rem;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Reassurance line with green checkmarks */
+.reassurance {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.reassuranceItem {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.checkIcon {
+    color: #4ade80;
+    flex-shrink: 0;
+}
+
+.reassuranceDot {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1080px) {
     .hero {
-        height: 80vh;
-        /* Fixed height for mobile hero */
-        min-height: 600px;
-        flex-direction: column;
-        justify-content: flex-end;
-        /* Align text to bottom like reference */
-        padding-top: 80px;
-        /* Space for navbar */
-        padding-bottom: 4rem;
-        text-align: center;
+        min-height: auto;
+        padding-top: 130px;
+        padding-bottom: 3rem;
+    }
+
+    .container {
+        padding: 0 2rem;
     }
 
     .content {
-        max-width: 100%;
-        margin-bottom: 0;
-        z-index: 10;
-        /* Ensure text pops against background */
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Restore absolute positioning for image on mobile */
-    .imageWrapper {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .imageWrapper img {
-        /* Add linear gradient overlay via css or leave existing ::before on .hero */
-        object-position: center;
+        max-width: 620px;
     }
 
     .title {
-        font-size: 2.75rem;
-        /* Larger title for impact */
+        font-size: clamp(2rem, 4.5vw, 2.9rem);
+        margin-bottom: 1.1rem;
+    }
+
+    .description {
+        font-size: 1.05rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .actions {
+        margin-bottom: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding-top: 125px;
+        padding-bottom: 3.5rem;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.5) 0%,
+            rgba(15, 23, 42, 0.3) 50%,
+            rgba(15, 23, 42, 0.58) 100%
+        );
+    }
+
+    .glowShape {
+        display: none !important;
+    }
+
+    .content {
+        align-items: center;
+        text-align: center;
+        padding: 0;
+    }
+
+    .title {
+        text-align: center;
+        font-size: clamp(1.75rem, 6.2vw, 2.35rem);
+        line-height: 1.2;
         margin-bottom: 1rem;
     }
 
     .description {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        opacity: 0.95;
+        text-align: center;
+        font-size: 0.95rem;
+        line-height: 1.55;
+        margin-bottom: 1.5rem;
+        max-width: 95%;
     }
 
     .actions {
+        justify-content: center;
         flex-direction: column;
-        gap: 1rem;
-        padding: 0 2rem;
+        width: 100%;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
     }
 
-    .badge {
-        background: var(--accent);
-        /* Restore accent color */
-        color: var(--primary-dark);
-        margin-bottom: 1.5rem;
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        max-width: 310px;
+        padding: 0.85rem 1.6rem;
+        font-size: 0.95rem;
+        justify-content: center;
+    }
+
+    .reassurance {
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .reassuranceItem {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .reassuranceDot {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 120px;
+        padding-bottom: 3rem;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    .title {
+        font-size: clamp(1.45rem, 6.8vw, 1.85rem);
+        line-height: 1.22;
+        margin-bottom: 0.85rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+        max-width: 100%;
+    }
+
+    .actions {
+        gap: 0.65rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        max-width: 100%;
+        padding: 0.8rem 1.4rem;
+        font-size: 0.92rem;
+    }
+
+    .reassurance {
+        gap: 0.45rem;
+        font-size: 0.88rem;
     }
 }

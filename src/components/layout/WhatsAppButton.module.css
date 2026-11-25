@@ -4,59 +4,57 @@
     right: 2rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
     z-index: 2000;
 }
 
 .button {
-    width: 65px;
-    height: 65px;
+    width: 62px;
+    height: 62px;
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white;
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.42);
     cursor: pointer;
-    transition: var(--transition-smooth);
-}
-
-.badge {
-    background: var(--white);
-    color: var(--primary-dark);
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
     position: relative;
-    border: 1px solid rgba(187, 71, 69, 0.1);
-    animation: bounceBadge 2s infinite ease-in-out;
+    text-decoration: none;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.badgeArrow {
+.button:hover {
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+}
+
+.button svg {
+    color: #ffffff;
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.pulseRing {
     position: absolute;
-    right: -6px;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: 12px;
-    height: 12px;
-    background: var(--white);
-    border-right: 1px solid rgba(187, 71, 69, 0.1);
-    border-top: 1px solid rgba(187, 71, 69, 0.1);
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    animation: whatsappPulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    pointer-events: none;
 }
 
-@keyframes bounceBadge {
-
-    0%,
-    100% {
-        transform: translateX(0);
+@keyframes whatsappPulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.85;
     }
-
-    50% {
-        transform: translateX(-5px);
+    60% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.35);
+        opacity: 0;
     }
 }
 
@@ -66,8 +64,8 @@
         right: 1.5rem;
     }
 
-    .badge {
-        display: none;
-        /* Hide text on small screens to avoid clutter */
+    .button {
+        width: 56px;
+        height: 56px;
     }
 }

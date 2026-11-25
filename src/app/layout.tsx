@@ -1,12 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import MotionProvider from "@/components/providers/MotionProvider";
 import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Colegio Divino Maestro | Educación de Excelencia",
@@ -21,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={outfit.className}>
-        {children}
-        <WhatsAppButton />
+        <MotionProvider>
+          {children}
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

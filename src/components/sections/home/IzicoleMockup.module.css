@@ -1,0 +1,2181 @@
+/* =========================================================================
+   IZICOLE SHOWCASE & MOCKUP STYLING
+   ========================================================================= */
+
+.showcaseWrapper {
+    width: 100%;
+    margin-bottom: 4.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ── Top Brand Strip ─────────────────────────────────────────────────────── */
+.izicoleBanner {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.04) 0%, rgba(187, 71, 69, 0.06) 100%);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    padding: 0.9rem 1.4rem;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(8px);
+}
+
+.brandRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.izicoleLogoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.izicoleLogoImg {
+    border-radius: 9px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.brandInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandName {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.brandBadge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.brandHighlight {
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--slate-600);
+    background: var(--white);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid var(--slate-200);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ── 2-Column Grid Layout ─────────────────────────────────────────────────── */
+.showcaseGrid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3.5rem;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .showcaseGrid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* ── COLUMNA IZQUIERDA: Selector ─────────────────────────────────────────── */
+.featureSelectorCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.selectorIntro {
+    margin-bottom: 0.5rem;
+}
+
+.pillLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(187, 71, 69, 0.08);
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(187, 71, 69, 0.15);
+}
+
+.selectorTitle {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    color: var(--primary-dark);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.015em;
+}
+
+.selectorSubtitle {
+    font-size: 0.975rem;
+    color: var(--slate-600);
+    line-height: 1.6;
+}
+
+.featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.featureItemBtn {
+    background: var(--white);
+    border: 1.5px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 1.15rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.featureItemBtn:hover {
+    border-color: rgba(187, 71, 69, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08);
+}
+
+.featureItemActive {
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+    border-color: var(--primary);
+    box-shadow: 0 10px 24px -4px rgba(187, 71, 69, 0.16);
+    transform: translateY(-2px);
+}
+
+.featureIconContainer {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--slate-100);
+    color: var(--slate-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.featureItemActive .featureIconContainer {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.featureTextContainer {
+    flex: 1;
+}
+
+.featureItemHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.featureItemTitle {
+    font-size: 1.025rem;
+    font-weight: 700;
+    color: var(--slate-900);
+}
+
+.featureItemActive .featureItemTitle {
+    color: var(--primary-dark);
+}
+
+.featureItemTag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: var(--slate-100);
+    color: var(--slate-600);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.featureItemActive .featureItemTag {
+    background: rgba(187, 71, 69, 0.1);
+    color: var(--primary);
+}
+
+.featureItemDesc {
+    font-size: 0.85rem;
+    color: var(--slate-500);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.featureArrow {
+    color: var(--slate-400);
+    transition: transform 0.25s ease, color 0.25s ease;
+    flex-shrink: 0;
+}
+
+.featureArrowActive {
+    color: var(--primary);
+    transform: translateX(3px);
+}
+
+.featureDetailBox {
+    background: #fafaf9;
+    border: 1px dashed var(--slate-300);
+    border-radius: 14px;
+    padding: 1.25rem;
+}
+
+.detailHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.detailTag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detailBadgeHighlight {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(187, 71, 69, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+}
+
+.detailDescription {
+    font-size: 0.875rem;
+    color: var(--slate-700);
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+}
+
+.detailChecklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.detailCheckItem {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.825rem;
+    color: var(--slate-800);
+    font-weight: 500;
+}
+
+.checkIcon {
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+/* ── COLUMNA DERECHA: Smartphone & Flotantes ─────────────────────────────── */
+.deviceShowcaseCol {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* ── PHONE FRAME (SMARTPHONE CSS) ────────────────────────────────────────── */
+.phoneFrame {
+    width: 100%;
+    max-width: 360px;
+    min-width: 0;
+    height: 670px;
+    background: #0f172a;
+    border-radius: 44px;
+    padding: 10px;
+    box-shadow:
+        0 0 0 2px #334155,
+        0 25px 60px -15px rgba(15, 23, 42, 0.35),
+        0 0 30px rgba(187, 71, 69, 0.12);
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.phoneSpeaker {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 4px;
+    background: #1e293b;
+    border-radius: 4px;
+    z-index: 30;
+}
+
+.phoneCameraDot {
+    position: absolute;
+    top: 13px;
+    left: calc(50% + 38px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1e293b;
+    z-index: 30;
+}
+
+/* System Status Bar */
+.phoneStatusBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 1.4rem 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    background: #ffffff;
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    z-index: 20;
+}
+
+.statusTime {
+    letter-spacing: -0.01em;
+}
+
+.statusIcons {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.networkIndicator {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.batteryPill {
+    font-size: 0.65rem;
+    background: #f1f5f9;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+/* izicole App Header inside Phone */
+.appHeader {
+    background: #ffffff;
+    padding: 0.6rem 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.appHeaderLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.appIconContainer {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #e2e8f0;
+    flex-shrink: 0;
+}
+
+.appLogoCircle {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.appTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.appHeaderName {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+}
+
+.appOnlineTag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: #dcfce7;
+    color: #16a34a;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+}
+
+.appHeaderSub {
+    font-size: 0.68rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.appHeaderRight {
+    display: flex;
+    align-items: center;
+}
+
+.bellBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bellBtn:hover {
+    background: #f1f5f9;
+    color: var(--primary);
+    transform: scale(1.08);
+    border-color: #cbd5e1;
+}
+
+.bellDot {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 7px;
+    height: 7px;
+    background: #dc2626;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 0 6px rgba(220, 38, 38, 0.6);
+}
+
+/* Student Strip */
+.studentStrip {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.6rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.studentAvatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.08);
+    color: #0f172a;
+    border: 1.5px solid rgba(15, 23, 42, 0.2);
+    font-size: 0.8rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.studentMeta {
+    flex: 1;
+    min-width: 0;
+}
+
+.studentName {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.studentGrade {
+    font-size: 0.7rem;
+    color: #64748b;
+    display: block;
+}
+
+.dniChip {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Scroll Area inside Screen */
+.screenScrollArea {
+    flex: 1;
+    background: #f8fafc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.screenBody {
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.screenSectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.15rem;
+}
+
+.sectionIcon {
+    color: var(--primary);
+}
+
+/* ── TAB 1: MIS HIJOS (ESTUDIANTES VINCULADOS) ───────────────────────────── */
+.studentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.studentCardItem {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 0.75rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.studentCardItem:hover {
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.studentCardSelected {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(187, 71, 69, 0.04) 0%, #ffffff 100%);
+    box-shadow: 0 0 0 1px var(--primary), 0 4px 14px rgba(187, 71, 69, 0.12);
+}
+
+.studentCardTop {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.studentCardAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatar_primaria {
+    background: rgba(187, 71, 69, 0.12);
+    color: var(--primary);
+    border: 1px solid rgba(187, 71, 69, 0.25);
+}
+
+.avatar_secundaria {
+    background: rgba(14, 165, 233, 0.12);
+    color: #0284c7;
+    border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.avatar_inicial {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.studentCardMain {
+    flex: 1;
+    min-width: 0;
+}
+
+.studentCardNameRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.1rem;
+}
+
+.studentCardName {
+    font-size: 0.825rem;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.levelBadge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+}
+
+.levelBadge_primaria {
+    background: rgba(187, 71, 69, 0.1);
+    color: var(--primary);
+}
+
+.levelBadge_secundaria {
+    background: rgba(14, 165, 233, 0.12);
+    color: #0284c7;
+}
+
+.levelBadge_inicial {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+}
+
+.studentCardGrade {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.studentCardDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+    padding-top: 0.45rem;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.65rem;
+}
+
+.studentCardDetailItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailItemLabel {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.detailItemValue {
+    color: #334155;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detailItemStatus {
+    color: #16a34a;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.familyInfoBox {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0.65rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.68rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.familyShieldIcon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* ── TAB 2: MATRIZ DE CALIFICACIONES (SIAGIE) ────────────────────────────── */
+.matrixScreenHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+
+.siagieBadge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    background: rgba(187, 71, 69, 0.1);
+    color: var(--primary);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(187, 71, 69, 0.2);
+}
+
+.matrixSummaryCard {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.matrixSummaryLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.matrixSummaryLabel {
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: #94a3b8;
+    letter-spacing: 0.06em;
+}
+
+.matrixScoreRow {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+}
+
+.matrixGradeBig {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #fef08a;
+    line-height: 1;
+}
+
+.matrixScoreNum {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
+.honorBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    background: rgba(245, 158, 11, 0.2);
+    color: #fef08a;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+}
+
+/* ── TABLA MATRIZ CONSOLIDADA ────────────────────────────────────────────── */
+.matrixContainer {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.matrixTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.matrixTable thead th {
+    background: #f1f5f9;
+    padding: 0.45rem 0.25rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: #475569;
+    border-bottom: 1px solid #cbd5e1;
+    border-right: 1px solid #e2e8f0;
+    letter-spacing: 0.02em;
+}
+
+.matrixTable thead th:last-child {
+    border-right: none;
+}
+
+.thCourse {
+    text-align: left !important;
+    padding-left: 0.6rem !important;
+    width: 38%;
+}
+
+.thPeriod {
+    width: 11.5%;
+    position: relative;
+}
+
+.thPeriodActive {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+}
+
+.activePeriodDot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #0284c7;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.thProm {
+    width: 14%;
+    background: #f8fafc !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+}
+
+.matrixTable tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.15s ease;
+}
+
+.matrixTable tbody tr:hover {
+    background: #f8fafc;
+}
+
+.matrixTable tbody td {
+    padding: 0.35rem 0.25rem;
+    border-right: 1px solid #f1f5f9;
+    font-size: 0.68rem;
+}
+
+.matrixTable tbody td:last-child {
+    border-right: none;
+}
+
+.tdCourse {
+    text-align: left;
+    padding-left: 0.6rem !important;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.tdScore {
+    font-weight: 700;
+    color: #334155;
+}
+
+.cellActive {
+    background: rgba(224, 242, 254, 0.45);
+    font-weight: 800 !important;
+    color: #0369a1 !important;
+}
+
+.tdMuted {
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.tdProm {
+    background: #fafaf9;
+    font-weight: 800;
+}
+
+.badgeAD {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 900;
+    background: #dcfce7;
+    color: #16a34a;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    line-height: 1.1;
+}
+
+.badgeA {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 900;
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    line-height: 1.1;
+}
+
+/* Fila de Totales */
+.trTotal {
+    background: #f8fafc;
+    border-top: 1.5px solid #cbd5e1;
+    font-weight: 800;
+}
+
+.tdCourseTotal {
+    text-align: left;
+    padding-left: 0.6rem !important;
+    font-size: 0.62rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: 0.03em;
+}
+
+.tdTotalNum {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.tdTotalFinal {
+    background: #f1f5f9;
+}
+
+.badgeFinal {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 900;
+    background: #fef08a;
+    color: #854d0e;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid #facc15;
+}
+
+/* Leyenda de la Matriz */
+.matrixLegend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.25rem 0.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.legendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.legendDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.dotAD {
+    background: #16a34a;
+}
+
+.dotA {
+    background: #2563eb;
+}
+
+.pdfDownloadBtn {
+    background: #ffffff;
+    border: 1.2px dashed #cbd5e1;
+    color: #0f172a;
+    border-radius: 10px;
+    padding: 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pdfDownloadBtn:hover {
+    background: #f1f5f9;
+    border-color: #0f172a;
+}
+
+/* ── TAB 3: COMUNICADOS ─────────────────────────────────────────────────── */
+.filterChipRow {
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+}
+
+.filterChip {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #64748b;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.filterChipActive {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    font-weight: 700;
+}
+
+.comunicadoCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 0.8rem;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+}
+
+.comunicadoTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.35rem;
+}
+
+.badgeRow {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.tagUrgente {
+    font-size: 0.62rem;
+    font-weight: 800;
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.tagColegio {
+    font-size: 0.62rem;
+    font-weight: 700;
+    background: #e0f2fe;
+    color: #0284c7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+}
+
+.tagTarea {
+    font-size: 0.62rem;
+    font-weight: 800;
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.tagHijo {
+    font-size: 0.62rem;
+    font-weight: 700;
+    background: #f3e8ff;
+    color: #7e22ce;
+    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+}
+
+.comunicadoDate {
+    font-size: 0.62rem;
+    color: #94a3b8;
+}
+
+.comunicadoTitle {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+}
+
+.comunicadoSnippet {
+    font-size: 0.72rem;
+    color: #475569;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.comunicadoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 0.45rem;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.attachment {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.62rem;
+    color: #64748b;
+    font-weight: 500;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.attachment span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.readConfirmBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.readConfirmed {
+    background: #16a34a;
+}
+
+.dueDateBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #b45309;
+    background: #fef3c7;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+}
+
+/* ── TAB 4: ASISTENCIA ──────────────────────────────────────────────────── */
+.monthHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.monthLabel {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.verifiedRecordBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 0.15rem 0.45rem;
+    border-radius: 9999px;
+}
+
+/* izicole Compact Attendance Stats Block */
+.attendanceStatsBlock {
+    background: #ffffff;
+    border: 1px solid rgba(150, 150, 150, 0.16);
+    border-radius: 14px;
+    padding: 0.75rem 0.85rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.rateBlock {
+    width: 38%;
+    padding-right: 0.5rem;
+}
+
+.rateHeader {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 0.1rem;
+}
+
+.rateValueRow {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.rateNumber {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.rateProgressTrack {
+    height: 4px;
+    background: rgba(150, 150, 150, 0.18);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin: 0.35rem 0 0.2rem;
+}
+
+.rateProgressFill {
+    height: 100%;
+    background: #0f172a;
+    border-radius: 9999px;
+}
+
+.rateDays {
+    font-size: 0.62rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.statDivider {
+    width: 1px;
+    height: 46px;
+    background: #e2e8f0;
+    margin: 0 0.6rem;
+}
+
+.statCellsRow {
+    flex: 1;
+    display: flex;
+    gap: 0.35rem;
+}
+
+.statCell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.2rem;
+    border-radius: 10px;
+    gap: 0.15rem;
+}
+
+.statPuntual {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.statTardanza {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.statFalta {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.statNum {
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.statTag {
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+/* izicole AttendanceTimeline Card */
+.timelineCard {
+    background: #ffffff;
+    border: 1px solid rgba(150, 150, 150, 0.16);
+    border-radius: 13px;
+    padding: 0.75rem 0.85rem;
+}
+
+.timelineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.statusPillPuntual {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: #dcfce7;
+    color: #16a34a;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+}
+
+.timelineDayTag {
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.timesRow {
+    display: flex;
+    align-items: center;
+}
+
+.timeCol {
+    flex: 1;
+    text-align: center;
+}
+
+.timeLabel {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+}
+
+.timeValueIn {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #16a34a;
+    line-height: 1.1;
+}
+
+.timeValueOut {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+.timeSub {
+    font-size: 0.6rem;
+    color: #64748b;
+    margin-top: 0.15rem;
+}
+
+.timeDivider {
+    width: 1px;
+    height: 38px;
+    background: #e2e8f0;
+}
+
+.attendanceTip {
+    font-size: 0.68rem;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 0.5rem 0.7rem;
+    border-radius: 9px;
+    line-height: 1.35;
+}
+
+/* ── BOTTOM APP NAVIGATION BAR (izicole style) ───────────────────────────── */
+.appBottomNav {
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0.2rem 0.8rem;
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+    z-index: 20;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.navTab {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0 0.15rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.navTab span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.navTabActive {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.navIconWithBadge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBadge {
+    position: absolute;
+    top: -4px;
+    right: -7px;
+    background: #dc2626;
+    color: #ffffff;
+    font-size: 0.58rem;
+    font-weight: 800;
+    padding: 0.05rem 0.3rem;
+    border-radius: 9999px;
+    border: 1.5px solid #ffffff;
+}
+
+/* ── NOTIFICATION MODAL & SHEET ──────────────────────────────────────────── */
+.notifOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(5px);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.2rem 0.5rem 0.5rem;
+}
+
+.notifModalCard {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(15, 23, 42, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    max-height: 92%;
+    overflow: hidden;
+}
+
+.notifDragHandle {
+    width: 36px;
+    height: 4px;
+    background: #cbd5e1;
+    border-radius: 9999px;
+    margin: 0.6rem auto 0.2rem;
+    flex-shrink: 0;
+}
+
+.notifModalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.9rem 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    flex-shrink: 0;
+}
+
+.notifModalTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.notifBellIconCircle {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: rgba(187, 71, 69, 0.1);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notifModalTitle {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+}
+
+.notifModalSubtitle {
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.notifCloseBtn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notifCloseBtn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.notifModalBody {
+    padding: 0.75rem 0.9rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.notifSectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.1rem;
+}
+
+.notifLiveBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 0.12rem 0.45rem;
+    border-radius: 9999px;
+}
+
+.notifPulseDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #16a34a;
+    box-shadow: 0 0 6px #16a34a;
+}
+
+.notifChildrenList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notifChildCard {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0.55rem 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s ease;
+}
+
+.notifChildCard:hover {
+    border-color: #cbd5e1;
+    background: #ffffff;
+}
+
+.notifChildAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notifChildInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.notifChildNameRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.1rem;
+}
+
+.notifChildName {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notifChildTime {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #16a34a;
+    flex-shrink: 0;
+}
+
+.notifChildMetaRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.notifChildGrade {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notifChildStatus {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.notifChildLocation {
+    font-size: 0.6rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+    font-style: italic;
+}
+
+/* Official Announcement Notification */
+.notifOfficialCard {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-left: 3.5px solid #ef4444;
+    border-radius: 12px;
+    padding: 0.65rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.notifOfficialCard:hover {
+    border-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12);
+}
+
+.notifOfficialHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notifOfficialTag {
+    font-size: 0.6rem;
+    font-weight: 800;
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+}
+
+.notifOfficialTime {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.notifOfficialTitle {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.notifOfficialSnippet {
+    font-size: 0.68rem;
+    color: #475569;
+    line-height: 1.35;
+}
+
+.notifOfficialAction {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding-top: 0.3rem;
+    border-top: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.notifModalFooter {
+    padding: 0.5rem 0.9rem 0.7rem;
+    border-top: 1px solid #f1f5f9;
+    flex-shrink: 0;
+}
+
+.notifDismissBtn {
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+}
+
+.notifDismissBtn:hover {
+    background: #1e293b;
+}
+
+/* ── TAB 5: MI CUENTA (PERFIL DEL APODERADO) ─────────────────────────────── */
+.parentProfileCard {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 0.85rem;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.parentProfileTop {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.parentAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+}
+
+.parentInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.parentNameRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.15rem;
+    flex-wrap: wrap;
+}
+
+.parentName {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.parentBadge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: rgba(187, 71, 69, 0.1);
+    color: var(--primary);
+    padding: 0.12rem 0.45rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.parentDni {
+    font-size: 0.68rem;
+    color: #64748b;
+    display: block;
+}
+
+.parentContactList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.parentContactItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.68rem;
+}
+
+.contactLabel {
+    color: #94a3b8;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.contactValue {
+    color: #334155;
+    font-weight: 700;
+    text-align: right;
+    font-size: 0.64rem;
+    word-break: break-all;
+}
+
+.accountSettingsGroup {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.settingsGroupTitle {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.settingsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.settingsItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.settingsItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settingsItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.settingsCheckIcon {
+    color: #16a34a;
+    flex-shrink: 0;
+}
+
+.settingsItemTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: block;
+    line-height: 1.15;
+}
+
+.settingsItemSub {
+    font-size: 0.65rem;
+    color: #64748b;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activePill {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 0.12rem 0.45rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
+.supportHelpBox {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 0.75rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.supportTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.supportIcon {
+    color: var(--primary);
+}
+
+.supportDesc {
+    font-size: 0.68rem;
+    color: #64748b;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.supportBtnRow {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+.supportPillBtn {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    cursor: default;
+}
+
+/* ── RESPONSIVE: PANTALLAS MENORES A 768px ────────────────────────────────── */
+@media (max-width: 767.98px) {
+    /* Ocultar las tarjetas de funcionalidades en anchos menores a 768px */
+    .featureList,
+    .featureItemBtn {
+        display: none !important;
+    }
+
+    .selectorIntro {
+        text-align: center;
+        padding: 0 0.5rem;
+    }
+
+    .selectorTitle {
+        font-size: 1.45rem;
+    }
+
+    .selectorSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .showcaseGrid {
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .deviceShowcaseCol {
+        padding: 0.5rem 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ── RESPONSIVE: PANTALLAS MÓVILES COMPACTAS (ej. 320px - 380px) ───────────── */
+@media (max-width: 400px) {
+    .phoneFrame {
+        height: 600px;
+        border-radius: 36px;
+        padding: 8px;
+        box-shadow:
+            0 0 0 2px #334155,
+            0 15px 35px -10px rgba(15, 23, 42, 0.35);
+    }
+
+    .phoneSpeaker {
+        width: 45px;
+        top: 12px;
+    }
+
+    .phoneCameraDot {
+        top: 11px;
+        left: calc(50% + 30px);
+    }
+
+    .phoneStatusBar {
+        padding: 0.2rem 0.8rem 0.35rem;
+        font-size: 0.65rem;
+    }
+
+    .appHeader {
+        padding: 0.45rem 0.65rem;
+    }
+
+    .studentStrip {
+        padding: 0.45rem 0.65rem;
+    }
+
+    .studentAvatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.72rem;
+    }
+
+    .studentName {
+        font-size: 0.76rem;
+    }
+
+    .studentGrade {
+        font-size: 0.64rem;
+    }
+
+    .dniChip {
+        font-size: 0.58rem;
+        padding: 0.15rem 0.35rem;
+    }
+
+    .screenBody {
+        padding: 0.65rem;
+        gap: 0.55rem;
+    }
+
+    .appBottomNav {
+        padding: 0.45rem 0.1rem 0.65rem;
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+    }
+
+    .navTab {
+        font-size: 0.55rem;
+        padding: 0 0.05rem;
+    }
+
+    .navTab svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .selectorTitle {
+        font-size: 1.25rem;
+    }
+
+    .selectorSubtitle {
+        font-size: 0.825rem;
+    }
+}

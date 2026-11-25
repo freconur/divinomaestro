@@ -1,0 +1,178 @@
+.section {
+    padding: 5.5rem 0 6.5rem 0;
+    background: var(--white);
+}
+
+.banner {
+    position: relative;
+    border-radius: 32px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #4a1514 60%, var(--primary-darker) 100%);
+    padding: 4.5rem 2.5rem;
+    overflow: hidden;
+    text-align: center;
+    color: var(--white);
+    box-shadow: 0 24px 48px -12px rgba(122, 40, 38, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glowShape {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.badgeSparkle {
+    color: var(--accent-gold);
+}
+
+.title {
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    color: var(--white);
+    letter-spacing: -0.01em;
+}
+
+.description {
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.primaryBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--white);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.95rem 2rem;
+    border-radius: 9999px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.25);
+}
+
+.primaryBtn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.35);
+    color: var(--primary-darker);
+}
+
+.secondaryBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.95rem 2rem;
+    border-radius: 9999px;
+    transition: var(--transition-smooth);
+}
+
+.secondaryBtn:hover {
+    background: rgba(255, 255, 255, 0.24);
+    border-color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.2);
+}
+
+.reassurance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.reassuranceItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.checkIcon {
+    color: var(--accent-gold);
+}
+
+.divider {
+    opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 3.5rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .reassurance {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .divider {
+        display: none;
+    }
+}
